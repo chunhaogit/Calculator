@@ -6,7 +6,21 @@ const styles = StyleSheet.create({
   },
   resultWrapper: {
     flex: 1,
+    padding: 12,
     backgroundColor: '#322f3d',
+  },
+  result: {
+    alignSelf: 'flex-end',
+    justifyContent: 'flex-end',
+  },
+  calculatorText: {
+    flex: 1,
+    color: '#838383',
+    textAlign: 'right',
+  },
+  resultText: {
+    color: '#fff',
+    fontSize: 40,
   },
   symbolWrapper: {
     flex: 1,
@@ -27,7 +41,7 @@ const styles = StyleSheet.create({
   },
   arithmeticWrapper: {
     flex: 1,
-    backgroundColor: '#f7c5a8',
+    backgroundColor: '#596e79',
   },
   arithmeticText: {
     // color: '#322f3d',
