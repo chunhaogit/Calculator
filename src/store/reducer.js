@@ -1,4 +1,4 @@
-import {NUMBER, CLEAR, DEL, EQUAL} from './actions';
+import {NUMBER, CLEAR, CLEARENTRY, EQUAL, PERCENTAGE} from './actions';
 
 const initialState = {
   sequence: '',
@@ -12,7 +12,7 @@ const CalculatorReducer = (state = initialState, action) => {
         ...state,
         sequence: state.sequence + action.payload,
       };
-    case DEL:
+    case CLEARENTRY:
       return {
         ...state,
         sequence: state.sequence.slice(0, state.sequence.length - 1),
@@ -22,6 +22,11 @@ const CalculatorReducer = (state = initialState, action) => {
         ...state,
         result: action.payload,
         // result: eval(state.sequence),
+      };
+    case PERCENTAGE:
+      return {
+        ...state,
+        result: parseFloat((state.result * 0.01).toFixed(12)),
       };
     case CLEAR:
       return {

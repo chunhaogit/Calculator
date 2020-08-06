@@ -3,11 +3,12 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
+    backgroundColor: '#222831',
   },
   resultWrapper: {
     flex: 1,
     padding: 12,
-    backgroundColor: '#322f3d',
+    backgroundColor: '#222831',
   },
   result: {
     alignSelf: 'flex-end',
@@ -15,38 +16,47 @@ const styles = StyleSheet.create({
   },
   calculatorText: {
     flex: 1,
-    color: '#838383',
+    fontSize: 20,
+    color: '#5e6073',
     textAlign: 'right',
   },
   resultText: {
     color: '#fff',
-    fontSize: 40,
+    fontSize: 50,
   },
   symbolWrapper: {
     flex: 1,
+    margin: 2,
+    borderRadius: 4,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#5d5d5d',
+  },
+  zero: {
+    flex: 2,
+    paddingHorizontal: 1,
   },
   numsWrapper: {
     flex: 3,
-    backgroundColor: '#fff',
   },
   numsRow: {
     flex: 1,
     flexDirection: 'row',
   },
   numsText: {
-    color: '#1b1c25',
+    fontSize: 18,
+    color: '#eae9e9',
   },
   arithmeticWrapper: {
     flex: 1,
-    backgroundColor: '#596e79',
   },
   arithmeticText: {
-    // color: '#322f3d',
-    color: '#fff',
-    fontSize: 16,
+    color: '#eae9e9',
+    fontSize: 18,
+  },
+  arithmetic: {
+    backgroundColor: '#505050',
   },
   row: {
     flex: 2,
