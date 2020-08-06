@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
-import {number, equal} from '../store/actions';
+import {number, equal, clearEntry} from '../store/actions';
 import styles from '../style/style';
 
 const arithmeticPads = ['÷', 'x', '-', '+', '='];
@@ -64,14 +64,22 @@ const Arithmetic = () => {
   const handlePress = (arithmetic) => {
     const lastString = sequence.charAt(sequence.length - 1);
     if (
-      sequence.length === 0 ||
-      (sequence.length === 0 && arithmetic !== '=') ||
+      (sequence.length === 0 && arithmetic !== '-') ||
+      (lastString === '÷' && arithmetic === '=') ||
+      (lastString === 'x' && arithmetic === '=') ||
+      (lastString === '-' && arithmetic === '=') ||
+      (lastString === '+' && arithmetic === '=')
+    ) {
+      return;
+    }
+    if (
       lastString === '÷' ||
       lastString === 'x' ||
       lastString === '-' ||
       lastString === '+'
     ) {
-      return;
+      dispatch(clearEntry());
+      return dispatch(number(arithmetic));
     }
     if (arithmetic === '=') {
       return dispatch(equal(equalFunc()));
