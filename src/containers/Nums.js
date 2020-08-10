@@ -1,11 +1,12 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
-import {number, clear, clearEntry, percentage} from '../store/actions';
+import {number, clear, clearEntry, signChanger} from '../store/actions';
+import {signChangerFunc} from '../utils/calculator';
 import styles from '../style/style';
 
 const numsPad = [
-  {nums: ['CE', 'C', '%']},
+  {nums: ['CE', 'C', '+/-']},
   {nums: [7, 8, 9]},
   {nums: [4, 5, 6]},
   {nums: [1, 2, 3]},
@@ -27,8 +28,14 @@ const Nums = () => {
     if (num === '.' && sequence.charAt(sequence.length - 1) === '.') {
       return;
     }
-    if (num === '%') {
-      return dispatch(percentage());
+    if (num === '+/-') {
+      if (
+        sequence.length === 0 ||
+        isNaN(sequence.charAt(sequence.length - 1))
+      ) {
+        return;
+      }
+      return dispatch(signChanger(signChangerFunc(sequence)));
     }
     return dispatch(number(num));
   };
